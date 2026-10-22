@@ -1,0 +1,110 @@
+=== UTC timestamp ===
+2026-10-22T19:18:12+00:00
+=== OS ===
+PRETTY_NAME="Ubuntu 24.04.1 LTS"
+NAME="Ubuntu"
+VERSION_ID="24.04"
+VERSION="24.04.1 LTS (Noble Numbat)"
+VERSION_CODENAME=noble
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+UBUNTU_CODENAME=noble
+LOGO=ubuntu-logo
+=== Application mode (no secrets) ===
+DB_BACKEND=postgres
+LAB_MODE=hardened
+HOST=127.0.0.1
+PORT=3000
+=== SSH effective settings ===
+permitrootlogin no
+pubkeyauthentication yes
+passwordauthentication no
+=== Firewall ===
+Status: active
+Logging: on (low)
+Default: deny (incoming), allow (outgoing), disabled (routed)
+New profiles: skip
+
+To                         Action      From
+--                         ------      ----
+22/tcp                     ALLOW IN    10.0.3.2                   # KABITA host management NAT
+22/tcp                     ALLOW IN    IP-ADMIN               # KABITA host management LAN
+8080/tcp                   ALLOW IN    SUBNET-LAB             # KABITA lab web
+8080/tcp                   ALLOW IN    10.0.3.2                   # KABITA local preview NAT
+
+=== Listening ports ===
+State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
+LISTEN 0      200        127.0.0.1:5432      0.0.0.0:*    users:(("postgres",pid=3941,fd=6))
+LISTEN 0      511          0.0.0.0:8080      0.0.0.0:*    users:(("nginx",pid=4957,fd=15),("nginx",pid=4956,fd=15),("nginx",pid=1931,fd=15))
+LISTEN 0      4096   127.0.0.53%lo:53        0.0.0.0:*    users:(("systemd-resolve",pid=435,fd=15))
+LISTEN 0      4096         0.0.0.0:22        0.0.0.0:*    users:(("sshd",pid=656,fd=3),("systemd",pid=1,fd=168))
+LISTEN 0      511        127.0.0.1:3000      0.0.0.0:*    users:(("MainThread",pid=5456,fd=22))
+LISTEN 0      4096      127.0.0.54:53        0.0.0.0:*    users:(("systemd-resolve",pid=435,fd=17))
+LISTEN 0      4096            [::]:22           [::]:*    users:(("sshd",pid=656,fd=4),("systemd",pid=1,fd=170))
+=== Service ===
+MemoryMax=402653184
+User=kabita
+ProtectSystem=strict
+NoNewPrivileges=yes
+ActiveState=active
+=== Fail2ban ===
+Status for the jail: sshd
+|- Filter
+|  |- Currently failed:	0
+|  |- Total failed:	0
+|  `- Journal matches:	_SYSTEMD_UNIT=sshd.service + _COMM=sshd
+`- Actions
+   |- Currently banned:	0
+   |- Total banned:	0
+   `- Banned IP list:
+=== File permissions ===
+600 root root /etc/kabita-lab/app.env
+=== Health and headers ===
+HTTP/1.1 200 OK
+Server: nginx
+Date: Thu, 22 Oct 2026 19:18:13 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Cache-Control: no-store
+X-Content-Type-Options: nosniff
+Referrer-Policy: no-referrer
+X-Frame-Options: DENY
+Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
+
+{"status":"ok","project":"KABITA LAB","backend":"postgres"}
+=== Recent application logs ===
+{"time":"2026-10-22T19:17:57.925Z","event":"login_success","source_ip":"IP-ADMIN","method":"POST","path":"/api/login","mode":"vulnerable","actor":"peternak.a@kabita.lab"}
+{"time":"2026-10-22T19:17:58.009Z","event":"login_success","source_ip":"IP-ADMIN","method":"POST","path":"/api/login","mode":"vulnerable","actor":"legacy@kabita.lab"}
+{"time":"2026-10-22T19:17:58.035Z","event":"sheep_detail","source_ip":"IP-ADMIN","method":"GET","path":"/api/sheep/sheep-b","mode":"vulnerable","actor":"peternak.a@kabita.lab","object":"sheep-b","cross_owner":true}
+{"time":"2026-10-22T19:17:58.093Z","event":"sensor_ingest","source_ip":"IP-ADMIN","method":"POST","path":"/api/ingest","mode":"vulnerable","device_id":"sensor-a","authenticated":false}
+{"time":"2026-10-22T19:17:58.132Z","event":"debug_export","source_ip":"IP-ADMIN","method":"GET","path":"/api/debug/export","mode":"vulnerable"}
+{"time":"2026-10-22T19:17:58.150Z","event":"sheep_detail","source_ip":"IP-ADMIN","method":"GET","path":"/api/sheep/sheep-a","mode":"vulnerable","actor":"peternak.a@kabita.lab","object":"sheep-a","cross_owner":false}
+{"time":"2026-10-22T19:17:58.200Z","event":"sensor_ingest","source_ip":"IP-ADMIN","method":"POST","path":"/api/ingest","mode":"vulnerable","device_id":"sensor-a","authenticated":true}
+{"time":"2026-10-22T19:17:58.233Z","event":"request_denied","source_ip":"IP-ADMIN","method":"POST","path":"/api/growth","mode":"vulnerable","status":404}
+{"time":"2026-10-22T19:17:58.270Z","event":"growth_created","source_ip":"IP-ADMIN","method":"POST","path":"/api/growth","mode":"vulnerable","actor":"peternak.a@kabita.lab","object":"sheep-a"}
+Stopping kabita-lab.service - KABITA isolated training API...
+kabita-lab.service: Deactivated successfully.
+Stopped kabita-lab.service - KABITA isolated training API.
+Started kabita-lab.service - KABITA isolated training API.
+{"event":"server_started","mode":"hardened","port":"3000","backend":"postgres"}
+{"time":"2026-10-22T19:18:00.466Z","event":"login_success","source_ip":"IP-ADMIN","method":"POST","path":"/api/login","mode":"hardened","actor":"peternak.a@kabita.lab"}
+{"time":"2026-10-22T19:18:00.547Z","event":"login_failed","source_ip":"IP-ADMIN","method":"POST","path":"/api/login","mode":"hardened"}
+{"time":"2026-10-22T19:18:00.549Z","event":"request_denied","source_ip":"IP-ADMIN","method":"POST","path":"/api/login","mode":"hardened","status":401}
+{"time":"2026-10-22T19:18:00.571Z","event":"object_access_denied","source_ip":"IP-ADMIN","method":"GET","path":"/api/sheep/sheep-b","mode":"hardened","actor":"peternak.a@kabita.lab","object":"sheep-b"}
+{"time":"2026-10-22T19:18:00.572Z","event":"request_denied","source_ip":"IP-ADMIN","method":"GET","path":"/api/sheep/sheep-b","mode":"hardened","status":404}
+{"time":"2026-10-22T19:18:00.614Z","event":"device_auth_denied","source_ip":"IP-ADMIN","method":"POST","path":"/api/ingest","mode":"hardened"}
+{"time":"2026-10-22T19:18:00.615Z","event":"request_denied","source_ip":"IP-ADMIN","method":"POST","path":"/api/ingest","mode":"hardened","status":401}
+{"time":"2026-10-22T19:18:00.644Z","event":"request_denied","source_ip":"IP-ADMIN","method":"GET","path":"/api/debug/export","mode":"hardened","status":401}
+{"time":"2026-10-22T19:18:00.665Z","event":"sheep_detail","source_ip":"IP-ADMIN","method":"GET","path":"/api/sheep/sheep-a","mode":"hardened","actor":"peternak.a@kabita.lab","object":"sheep-a","cross_owner":false}
+{"time":"2026-10-22T19:18:00.718Z","event":"sensor_ingest","source_ip":"IP-ADMIN","method":"POST","path":"/api/ingest","mode":"hardened","device_id":"sensor-a","authenticated":true}
+{"time":"2026-10-22T19:18:00.735Z","event":"request_denied","source_ip":"IP-ADMIN","method":"POST","path":"/api/growth","mode":"hardened","status":404}
+Stopping kabita-lab.service - KABITA isolated training API...
+kabita-lab.service: Deactivated successfully.
+Stopped kabita-lab.service - KABITA isolated training API.
+Started kabita-lab.service - KABITA isolated training API.
+{"event":"server_started","mode":"hardened","port":"3000","backend":"postgres"}

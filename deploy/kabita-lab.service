@@ -1,0 +1,28 @@
+[Unit]
+Description=KABITA isolated training API
+After=network.target postgresql.service
+
+[Service]
+User=kabita
+Group=kabita
+WorkingDirectory=/opt/kabita-lab
+EnvironmentFile=/etc/kabita-lab/app.env
+ExecStart=/usr/local/bin/node server/app.mjs
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+CapabilityBoundingSet=
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+UMask=0077
+MemoryMax=384M
+TasksMax=64
+
+[Install]
+WantedBy=multi-user.target

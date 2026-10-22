@@ -1,0 +1,43 @@
+{
+  "time_utc": "2026-10-22T19:17:50.181174+00:00",
+  "target": "http://IP-TARGET:8080",
+  "source": "Windows host IP-ADMIN",
+  "modes": {
+    "vulnerable": {
+      "V01_default_account": 200,
+      "V02_cross_owner": 200,
+      "V03_no_device_token": 201,
+      "V04_debug_without_login": 200,
+      "own_data_positive_control": 200,
+      "valid_device_positive_control": 201,
+      "cross_owner_write_denied": 404
+    },
+    "hardened": {
+      "V01_default_account": 401,
+      "V02_cross_owner": 404,
+      "V03_no_device_token": 401,
+      "V04_debug_without_login": 401,
+      "own_data_positive_control": 200,
+      "valid_device_positive_control": 201,
+      "cross_owner_write_denied": 404
+    }
+  },
+  "ports_before": {
+    "22": "open",
+    "80": "closed_or_filtered",
+    "443": "closed_or_filtered",
+    "3000": "closed_or_filtered",
+    "5432": "closed_or_filtered",
+    "8080": "open"
+  },
+  "postgres_persistence_after_restart": "PASS",
+  "key_ssh_after_hardening": "kel7target",
+  "ports_after": {
+    "22": "open",
+    "80": "closed_or_filtered",
+    "443": "closed_or_filtered",
+    "3000": "closed_or_filtered",
+    "5432": "closed_or_filtered",
+    "8080": "open"
+  }
+}

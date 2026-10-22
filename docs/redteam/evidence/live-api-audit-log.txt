@@ -1,0 +1,41 @@
+Started kabita-lab.service - KABITA isolated training API.
+Stopping kabita-lab.service - KABITA isolated training API...
+kabita-lab.service: Deactivated successfully.
+Stopped kabita-lab.service - KABITA isolated training API.
+Started kabita-lab.service - KABITA isolated training API.
+{"event":"server_started","mode":"hardened","port":"3000","backend":"postgres"}
+Stopping kabita-lab.service - KABITA isolated training API...
+kabita-lab.service: Deactivated successfully.
+Stopped kabita-lab.service - KABITA isolated training API.
+Started kabita-lab.service - KABITA isolated training API.
+{"event":"server_started","mode":"vulnerable","port":"3000","backend":"postgres"}
+{"time":"2026-10-22T19:17:57.925Z","event":"login_success","source_ip":"IP-ADMIN","method":"POST","path":"/api/login","mode":"vulnerable","actor":"peternak.a@kabita.lab"}
+{"time":"2026-10-22T19:17:58.009Z","event":"login_success","source_ip":"IP-ADMIN","method":"POST","path":"/api/login","mode":"vulnerable","actor":"legacy@kabita.lab"}
+{"time":"2026-10-22T19:17:58.035Z","event":"sheep_detail","source_ip":"IP-ADMIN","method":"GET","path":"/api/sheep/sheep-b","mode":"vulnerable","actor":"peternak.a@kabita.lab","object":"sheep-b","cross_owner":true}
+{"time":"2026-10-22T19:17:58.093Z","event":"sensor_ingest","source_ip":"IP-ADMIN","method":"POST","path":"/api/ingest","mode":"vulnerable","device_id":"sensor-a","authenticated":false}
+{"time":"2026-10-22T19:17:58.132Z","event":"debug_export","source_ip":"IP-ADMIN","method":"GET","path":"/api/debug/export","mode":"vulnerable"}
+{"time":"2026-10-22T19:17:58.150Z","event":"sheep_detail","source_ip":"IP-ADMIN","method":"GET","path":"/api/sheep/sheep-a","mode":"vulnerable","actor":"peternak.a@kabita.lab","object":"sheep-a","cross_owner":false}
+{"time":"2026-10-22T19:17:58.200Z","event":"sensor_ingest","source_ip":"IP-ADMIN","method":"POST","path":"/api/ingest","mode":"vulnerable","device_id":"sensor-a","authenticated":true}
+{"time":"2026-10-22T19:17:58.233Z","event":"request_denied","source_ip":"IP-ADMIN","method":"POST","path":"/api/growth","mode":"vulnerable","status":404}
+{"time":"2026-10-22T19:17:58.270Z","event":"growth_created","source_ip":"IP-ADMIN","method":"POST","path":"/api/growth","mode":"vulnerable","actor":"peternak.a@kabita.lab","object":"sheep-a"}
+Stopping kabita-lab.service - KABITA isolated training API...
+kabita-lab.service: Deactivated successfully.
+Stopped kabita-lab.service - KABITA isolated training API.
+Started kabita-lab.service - KABITA isolated training API.
+{"event":"server_started","mode":"hardened","port":"3000","backend":"postgres"}
+{"time":"2026-10-22T19:18:00.466Z","event":"login_success","source_ip":"IP-ADMIN","method":"POST","path":"/api/login","mode":"hardened","actor":"peternak.a@kabita.lab"}
+{"time":"2026-10-22T19:18:00.547Z","event":"login_failed","source_ip":"IP-ADMIN","method":"POST","path":"/api/login","mode":"hardened"}
+{"time":"2026-10-22T19:18:00.549Z","event":"request_denied","source_ip":"IP-ADMIN","method":"POST","path":"/api/login","mode":"hardened","status":401}
+{"time":"2026-10-22T19:18:00.571Z","event":"object_access_denied","source_ip":"IP-ADMIN","method":"GET","path":"/api/sheep/sheep-b","mode":"hardened","actor":"peternak.a@kabita.lab","object":"sheep-b"}
+{"time":"2026-10-22T19:18:00.572Z","event":"request_denied","source_ip":"IP-ADMIN","method":"GET","path":"/api/sheep/sheep-b","mode":"hardened","status":404}
+{"time":"2026-10-22T19:18:00.614Z","event":"device_auth_denied","source_ip":"IP-ADMIN","method":"POST","path":"/api/ingest","mode":"hardened"}
+{"time":"2026-10-22T19:18:00.615Z","event":"request_denied","source_ip":"IP-ADMIN","method":"POST","path":"/api/ingest","mode":"hardened","status":401}
+{"time":"2026-10-22T19:18:00.644Z","event":"request_denied","source_ip":"IP-ADMIN","method":"GET","path":"/api/debug/export","mode":"hardened","status":401}
+{"time":"2026-10-22T19:18:00.665Z","event":"sheep_detail","source_ip":"IP-ADMIN","method":"GET","path":"/api/sheep/sheep-a","mode":"hardened","actor":"peternak.a@kabita.lab","object":"sheep-a","cross_owner":false}
+{"time":"2026-10-22T19:18:00.718Z","event":"sensor_ingest","source_ip":"IP-ADMIN","method":"POST","path":"/api/ingest","mode":"hardened","device_id":"sensor-a","authenticated":true}
+{"time":"2026-10-22T19:18:00.735Z","event":"request_denied","source_ip":"IP-ADMIN","method":"POST","path":"/api/growth","mode":"hardened","status":404}
+Stopping kabita-lab.service - KABITA isolated training API...
+kabita-lab.service: Deactivated successfully.
+Stopped kabita-lab.service - KABITA isolated training API.
+Started kabita-lab.service - KABITA isolated training API.
+{"event":"server_started","mode":"hardened","port":"3000","backend":"postgres"}
